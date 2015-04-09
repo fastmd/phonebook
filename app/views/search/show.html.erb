@@ -1,0 +1,16 @@
+
+<%= link_to "RU", controller: "search", action: "show_ru", id: @hum.id%> 
+<%= link_to "Inapoi", controller: "search", action: "show_ru", id: @hum.id%>
+  
+
+<center><h1>Abonent</h1>
+
+<div class="row">
+	<p>Companie : <%= @hum.org %></p><br>
+	<p>Telephone : <%= @hum.rtel %></p><br>
+	<p>Name : <%= @hum.roname %></p><br>
+	<p>Surname : <%= @hum.rosurname %></p><br>
+	<p>Telefonul mobil : <%= @hum.mtel %></p><br>
+	<p>Email : <%= @hum.email %></p><br>
+</div>
+</center>

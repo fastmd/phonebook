@@ -1,0 +1,62 @@
+<div class="small-12 large-2 columns">
+  	<%= link_to "RU", controller: "search", action: "search_ru", org:@prev_org,fraz:@abs%>
+  </div>
+
+<div class="row">
+  
+  <center><h1>ME telephonebook</h1></center>
+  
+</div>
+
+<div class="row">
+	<%= form_for search_ru_path, method: :get do |f| %>
+        <br><br>
+        <% if @prev_org.nil?%>
+        <% @prev_org = "" %>
+        <% end %>
+        <%= select_tag :fil, options_for_select(["","IS Moldelectrica","RETI NORD-VEST", 
+        	"RETI NORD", "RETI CENTRU" , "RETI SUD" ],@prev_org)%>
+    	<%= text_field_tag :q, @abs %>
+    	<center><%= submit_tag "Search", name: nil %></center>
+    
+   <br>
+  
+<% end %> 
+</div>
+
+
+<center>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Intreprindere</th>
+      <th>FIO</th>
+      <th width="150">Telephone</th>
+      <th width="150">E-mail</th>
+      <th width="150">Action</th>
+    </tr>
+  </thead>
+  <%= paginate @abrecs %>
+  <tbody>
+  <% i=1 %>  
+  <% @abrecs.each do |human| %>
+  <% if human.runame > "" %>         	    	
+    <tr>
+      <td><%= human.org %></td>
+      <td><%=  human.rosurname %>
+      	<%=  human.roname %>
+      	<%=  human.rofname %>
+      	</td>
+      <td><center><%=  human.rtel %></center></td>
+      <td><%=  human.email %></td>
+      <td><li>
+        <%= link_to "show", controller: "search", action: "show", id: human._id%>
+        </li></td>
+    </tr>
+    
+    <% end %>   	   
+  <% end %>
+  </tbody>
+</table>
+</center>
+

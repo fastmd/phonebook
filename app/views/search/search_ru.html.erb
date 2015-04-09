@@ -1,0 +1,61 @@
+<div class="small-12 large-2 columns">
+  	<%= link_to "RO", controller: "search", action: "search", org:@prev_org,fraz:@abs%>
+  </div>
+<div class="row">
+	
+  <center><h1>ME телефонная книга</h1></center>
+</div>
+
+<div class="row">
+	<%= form_for search_ru_path, method: :get do |f| %>
+	
+        <br><br>
+        <% if @prev_org.nil?%>
+        <% @prev_org = "" %>
+        <% end %>
+        <%= select_tag :fil, options_for_select(["","IS Moldelectrica","RETI NORD-VEST", 
+        	"RETI NORD", "RETI CENTRU" , "RETI SUD" ],@prev_org)%>
+    	<%= text_field_tag :q, @abs%>
+    	<center><%= submit_tag "Искать", name: nil %></center>
+    
+   <br>
+  
+<% end %> 
+</div>
+ 
+
+<center>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Предприятие</th>
+      <th>ФИО</th>
+      <th width="150">Рабочий телефон</th>
+      <th width="150">E-mail</th>
+      <th width="150">Действие</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  <% i=1 %>  
+  <% @abrecs.each do |human| %>
+  <% if human.runame > "" %>         	    	
+    <tr>
+      <td><%= human.org %></td>
+      <td><%=  human.rusurname %>
+      	<%=  human.runame %>
+      	<%=  human.rufname %>
+      	</td>
+      <td><center><%=  human.rtel %></center></td>
+      <td><%=  human.email %></td>
+      <td><li>
+        <%= link_to "Показать", controller: "search", action: "show_ru", id: human._id%>
+        </li></td>
+    </tr>
+    
+    <% end %>   	   
+  <% end %>
+  <%= paginate @abrecs %>
+  </tbody>
+</table>
+</center>
