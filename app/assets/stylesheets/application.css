@@ -14,3 +14,9 @@
  *= require_self
  */
 /*= require foundation */
+
+$include-html-panel-classes: $include-html-classes !default;
+
+$panel-bg: scale-color($white, $lightness: -5%) !default;
+$panel-border-style: solid !default;
+$panel-border-size: 1px !default;

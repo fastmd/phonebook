@@ -4,3 +4,10 @@
 body {
   background-image: image-url('wal.jpg'); // link to /assets/images/texture.png
 }
+$panel-font-color: black !default;
+$panel-font-color-alt: black !default;
+
+$panel-header-adjust: true !default;
+$panel-link-color: white !default;
+$panel-bg: scale-color(gray, $lightness: 44%) !default;
+
